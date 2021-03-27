@@ -17,8 +17,9 @@ https://github.com/ThirteenAG/III.VC.SA.WindowedMode
 
 ## Installation
 
-1. To use this mod you need an ASI loader, I recommend [Silent's ASI Loader](https://www.gtagarage.com/mods/show.php?id=21709) since I've been using it without any issue over past 10 years, all you have to do is copy contents to your GTA SA installation directory
-2. Go to [Releases](https://github.com/AmyrAhmady/gta-samp-mouse-only) and download latest version ASI plugin and copy the `.asi` file into your GTA SA installation directory
+1. You need [SAMP 0.3.7 R1](https://github.com/KrustyKoyle/files.sa-mp.com-Archive/blob/master/sa-mp-0.3.7-install.exe) installed.
+2. To use this mod you need an ASI loader, I recommend [Silent's ASI Loader](https://www.gtagarage.com/mods/show.php?id=21709) since I've been using it without any issue over past 10 years, all you have to do is copy contents to your GTA SA installation directory
+3. Go to [Releases](https://github.com/AmyrAhmady/gta-samp-mouse-only) and download latest version ASI plugin and copy the `.asi` file into your GTA SA installation directory
 
 ## Usage
 
