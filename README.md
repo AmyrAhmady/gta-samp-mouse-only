@@ -3,6 +3,9 @@ This is basically a mod for GTA SAMP to play with mouse only, and it's a way to 
 
 (Yes I know ther eare some repetitive code or basically everything thrown into one file to handle all actions, I'll get it sorted when I add support for other SAMP clients)
 
+## Showcase
+https://youtu.be/0bnMW2-b6dg
+
 ## Notes
 
 - This mod only works with ***SA:MP 0.3.7 R1*** (not even gtasa singleplayer).
