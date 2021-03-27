@@ -27,6 +27,7 @@ bool			AutoMoveBackwardToggled = false;
 CROUCH_STATE	CrouchingState = CROUCH_STATE::NONE;
 
 void Start();
+void Log(const std::string & text);
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
@@ -84,7 +85,7 @@ void Start()
 							{
 								utils::ReleaseKey('W'); // 'W' key
 								AutoMoveForwardToggled = false;
-								std::cout << "Auto Move Forward is now disabled" << std::endl;
+								Log("Auto Move Forward is now disabled");
 							}
 							else
 							{
@@ -92,10 +93,10 @@ void Start()
 								{
 									CursorIsToggled = false;
 									CGame__SetCursorMode(pGame, CursorIsToggled ? 3 : 0, CursorIsToggled);
-									std::cout << (CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor") << std::endl;
+									Log(CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor");
 								}
 								AutoMoveForwardToggled = true;
-								std::cout << "Auto Move Forward is now enabled" << std::endl;
+								Log("Auto Move Forward is now enabled");
 							}
 						}
 						else if (mmb_count >= 2)
@@ -108,12 +109,12 @@ void Start()
 								utils::ReleaseKey('S'); // 'S' key
 								AutoMoveForwardToggled = false;
 								AutoMoveBackwardToggled = false;
-								std::cout << "Auto Move Forward is now disabled" << std::endl;
-								std::cout << "Auto Move Backward is now disabled" << std::endl;
+								Log("Auto Move Forward is now disabled");
+								Log("Auto Move Backward is now disabled");
 							}
 
 							CGame__SetCursorMode(pGame, CursorIsToggled ? 3 : 0, CursorIsToggled);
-							std::cout << (CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor") << std::endl;
+							Log((CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor"));
 						}
 						mmb_count = 0;
 					}
@@ -136,7 +137,7 @@ void Start()
 							{
 								CursorIsToggled = false;
 								CGame__SetCursorMode(pGame, CursorIsToggled ? 3 : 0, CursorIsToggled);
-								std::cout << (CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor") << std::endl;
+								Log((CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor"));
 							}
 
 							// Handle vehicle leave
@@ -161,7 +162,7 @@ void Start()
 									uint16_t vehid = CVehiclePool__GetID(pNetGame->m_pPools->m_pVehicle, vehicle);
 									CPed_ExitVehicle(localPed);
 									CLocalPlayer__SendVehicleExitRPC(localPed, vehid);
-									std::cout << "Exiting current vehicle" << std::endl;
+									Log("Exiting current vehicle");
 								}
 							}
 							else
@@ -175,12 +176,12 @@ void Start()
 										// Stop auto move forward actions first, then enter vehicle just to avoid interfering each other
 										utils::ReleaseKey(0x57); // 'W' key
 										AutoMoveForwardToggled = false;
-										std::cout << "Auto Move Forward is now disabled" << std::endl;
+										Log("Auto Move Forward is now disabled");
 										CPed_EnterVehicle(localPed, vehicle->m_dwHandle, FALSE);
 										SendVehicleEnterRPC(closestVehid, FALSE);
 									}
 								}
-								std::cout << "Entering closest vehicle" << std::endl;
+								Log("Entering closest vehicle");
 							}
 						}
 						else if (rmb_count >= 3)
@@ -190,7 +191,7 @@ void Start()
 							{
 								CursorIsToggled = false;
 								CGame__SetCursorMode(pGame, CursorIsToggled ? 3 : 0, CursorIsToggled);
-								std::cout << (CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor") << std::endl;
+								Log((CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor"));
 							}
 							void * localPed = CGame__GetLocalPed(pGame);
 							// Perform a vehicle enter as passenger
@@ -205,12 +206,12 @@ void Start()
 										// Stop auto move forward actions first, then enter vehicle just to avoid interfering each other
 										utils::ReleaseKey(0x57); // 'W' key
 										AutoMoveForwardToggled = false;
-										std::cout << "Auto Move Forward is now disabled" << std::endl;
+										Log("Auto Move Forward is now disabled");
 										CPed_EnterVehicle(localPed, vehicle->m_dwHandle, TRUE);
 										SendVehicleEnterRPC(closestVehid, TRUE);
 									}
 								}
-								std::cout << "Entering closest vehicle as passenger" << std::endl;
+								Log("Entering closest vehicle as passenger");
 							}
 						}
 						rmb_count = 0;
@@ -229,7 +230,7 @@ void Start()
 				{
 					utils::ReleaseKey('S'); // 'S' key
 					AutoMoveBackwardToggled = false;
-					std::cout << "Auto Move Backward is now disabled" << std::endl;
+					Log("Auto Move Backward is now disabled");
 				}
 				else
 				{
@@ -238,15 +239,16 @@ void Start()
 					{
 						CursorIsToggled = false;
 						CGame__SetCursorMode(pGame, CursorIsToggled ? 3 : 0, CursorIsToggled);
-						std::cout << (CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor") << std::endl;
+						Log((CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor"));
 					}
 					AutoMoveBackwardToggled = true;
-					std::cout << "Auto Move Backward is now disabled" << std::endl;
+					Log("Auto Move Backward is now disabled");
 				}
 			}
 			else
 			{
-				std::cout << "Simulate Space key" << std::endl;
+
+				Log("Simulate Space key");
 				utils::PressAndReleaseKey(VK_SPACE);
 			}
 
@@ -254,25 +256,25 @@ void Start()
 
 		if (GetAsyncKeyState(VK_XBUTTON2) & 0x01)
 		{
-			std::cout << "Simulate C key" << std::endl;
+			Log("Simulate C key");
 
 			if (CursorIsToggled)
 			{
 				CursorIsToggled = false;
 				CGame__SetCursorMode(pGame, CursorIsToggled ? 3 : 0, CursorIsToggled);
-				std::cout << (CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor") << std::endl;
+				Log((CursorIsToggled ? "Enabled mouse cursor" : "Disabled mouse cursor"));
 			}
 
 			if (CrouchingState == CROUCH_STATE::NONE)
 			{
-				std::cout << "CROUCH_STATE::CROUCHING" << std::endl;
+				Log("CROUCH_STATE::CROUCHING");
 				CrouchingState = CROUCH_STATE::CROUCHING;
 
 				utils::PressAndReleaseKey('C'); // 'C' key
 
 				SetTimer(SAMPWnd, COURCH_TIMER_ID, 500, [](HWND hWnd, UINT message, UINT idTimer, DWORD dwTime)
 					{
-						std::cout << "CROUCH_STATE::IDLE" << std::endl;
+						Log("CROUCH_STATE::IDLE");
 						CrouchingState = CROUCH_STATE::IDLE;
 
 						KillTimer(hWnd, COURCH_TIMER_ID);
@@ -282,14 +284,14 @@ void Start()
 			}
 			else if (CrouchingState == CROUCH_STATE::IDLE)
 			{
-				std::cout << "CROUCH_STATE::GETTING_UP" << std::endl;
+				Log("CROUCH_STATE::GETTING_UP");
 				CrouchingState = CROUCH_STATE::GETTING_UP;
 
 				utils::PressAndReleaseKey('C'); // 'C' key
 
 				SetTimer(SAMPWnd, COURCH_TIMER_ID, 500, [](HWND hWnd, UINT message, UINT idTimer, DWORD dwTime)
 					{
-						std::cout << "CROUCH_STATE::NONE" << std::endl;
+						Log("CROUCH_STATE::NONE");
 						CrouchingState = CROUCH_STATE::NONE;
 
 						KillTimer(hWnd, COURCH_TIMER_ID);
@@ -304,7 +306,7 @@ void Start()
 			{
 				utils::ReleaseKey('W'); // 'W' key
 				AutoMoveForwardToggled = false;
-				std::cout << "Auto Move Forward is now disabled" << std::endl;
+				Log("Auto Move Forward is now disabled");
 				continue;
 			}
 
@@ -323,3 +325,9 @@ void Start()
 	}
 }
 
+void Log(const std::string & text)
+{
+#ifdef _DEBUG
+	std::cout << text;
+#endif
+}
