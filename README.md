@@ -10,7 +10,7 @@ https://youtu.be/0bnMW2-b6dg
 
 - This mod only works with ***SA:MP 0.3.7 R1*** (not even gtasa singleplayer).
 - In order to use an on-screen keyboard, you need to run GTASA in windowed mode, there are multiple ASI plugins for that and one can be found here: 
-https://github.com/ThirteenAG/III.VC.SA.WindowedMode
+https://ugbase.eu/threads/gta-sa-multiprocess-updated.4100/
 - You need to enable Steer with Mouse in **Options**, **Controller Setup**, **Mouse Settings** to be able to do wheel steering while driving.
 - You also have to bind jump action to **SPACE** key instead of **Left Shift** in order letting this mod simulate the key press for you.
 - You need to disable cursor mode first to go to game's pause menu
