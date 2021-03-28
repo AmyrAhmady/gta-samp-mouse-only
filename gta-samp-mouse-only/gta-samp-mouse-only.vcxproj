@@ -162,9 +162,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="logger.hpp" />
     <ClInclude Include="samp.hpp" />
     <ClInclude Include="utils.hpp" />
   </ItemGroup>
