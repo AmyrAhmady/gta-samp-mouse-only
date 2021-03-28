@@ -42,30 +42,38 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 
 void Start()
 {
+	bool Initialized = false;
 	HWND SAMPWnd = NULL;
-	while (true)
+	while (!Initialized)
 	{
-		SAMPWnd = FindWindow(NULL, L"GTA:SA:MP");
+#ifdef _DEBUG
+		AllocConsole();
+		freopen("CONOUT$", "w", stdout);
+#endif
+		SAMPWnd = FindWindow(L"Grand theft auto San Andreas", NULL);
 		if (SAMPWnd)
 		{
-			SAMPHandle = reinterpret_cast<DWORD>(GetModuleHandle(L"samp.dll"));
-			if (SAMPHandle)
+			LOG << "Found GTA San Andreas window";
+			while (true) 
 			{
-				pGame = *(DWORD **)(SAMPHandle + 0x21A10C);
-				pNetGame = *(CNetGame **)(SAMPHandle + 0x21A0F8);
-				if (pNetGame == nullptr) continue;
-				break;
+				SAMPHandle = reinterpret_cast<DWORD>(GetModuleHandle(L"samp.dll"));
+				if (SAMPHandle)
+				{
+					pGame = *(DWORD **)(SAMPHandle + 0x21A10C);
+					pNetGame = *(CNetGame **)(SAMPHandle + 0x21A0F8);
+					if (pNetGame == nullptr)
+					{
+						Sleep(200);
+						continue;
+					}
+					LOG << "Found an instance of CGame and CNetGame";
+					Initialized = true;
+					break;
+				}
 			}
-
 		};
 		Sleep(200);
 	}
-
-#ifdef _DEBUG
-	AllocConsole();
-#endif
-
-	freopen("CONOUT$", "w", stdout);
 
 	while (true)
 	{
