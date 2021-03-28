@@ -142,9 +142,9 @@ void Start()
 
 							// Handle vehicle leave
 							void * localPed = CGame__GetLocalPed(pGame);
-							if (CPed_IsInVehicle(localPed))
+							if (CPed__IsInVehicle(localPed))
 							{
-								CVehicle * vehicle = CPed_GetVehicle(localPed);
+								CVehicle * vehicle = CPed__GetVehicle(localPed);
 								if (vehicle)
 								{
 									if (AutoMoveBackwardToggled)
@@ -160,7 +160,7 @@ void Start()
 									}
 
 									uint16_t vehid = CVehiclePool__GetID(pNetGame->m_pPools->m_pVehicle, vehicle);
-									CPed_ExitVehicle(localPed);
+									CPed__ExitVehicle(localPed);
 									CLocalPlayer__SendVehicleExitRPC(localPed, vehid);
 									Log("Exiting current vehicle");
 								}
@@ -177,7 +177,7 @@ void Start()
 										utils::ReleaseKey(0x57); // 'W' key
 										AutoMoveForwardToggled = false;
 										Log("Auto Move Forward is now disabled");
-										CPed_EnterVehicle(localPed, vehicle->m_dwHandle, FALSE);
+										CPed__EnterVehicle(localPed, vehicle->m_dwHandle, FALSE);
 										SendVehicleEnterRPC(closestVehid, FALSE);
 									}
 								}
@@ -195,7 +195,7 @@ void Start()
 							}
 							void * localPed = CGame__GetLocalPed(pGame);
 							// Perform a vehicle enter as passenger
-							if (!CPed_IsInVehicle(localPed))
+							if (!CPed__IsInVehicle(localPed))
 							{
 								uint16_t closestVehid = CVehiclePool__GetNearestVehicle(pNetGame->m_pPools->m_pVehicle);
 								if (closestVehid < 2000 && CVehiclePool__GetSlotState(pNetGame->m_pPools->m_pVehicle, closestVehid))
@@ -207,7 +207,7 @@ void Start()
 										utils::ReleaseKey(0x57); // 'W' key
 										AutoMoveForwardToggled = false;
 										Log("Auto Move Forward is now disabled");
-										CPed_EnterVehicle(localPed, vehicle->m_dwHandle, TRUE);
+										CPed__EnterVehicle(localPed, vehicle->m_dwHandle, TRUE);
 										SendVehicleEnterRPC(closestVehid, TRUE);
 									}
 								}
@@ -224,7 +224,7 @@ void Start()
 		if (GetAsyncKeyState(VK_XBUTTON1) & 0x01)
 		{
 			void * localPed = CGame__GetLocalPed(pGame);
-			if (CPed_IsInVehicle(localPed))
+			if (CPed__IsInVehicle(localPed))
 			{
 				if (AutoMoveBackwardToggled)
 				{

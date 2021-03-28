@@ -74,10 +74,10 @@ samp_class_function<int, void *, uint16_t> CVehiclePool__GetSlotState(0x1140);
 samp_class_function<CVehicle *, void *, uint16_t> CVehiclePool__GetGTAObject(0x1110);
 samp_class_function<uint16_t, void *, CVehicle *> CVehiclePool__GetID(0x1110);
 samp_class_function<float, void *> CEntity__GetDistanceToLocalPed(0x9A700);
-samp_class_function<CVehicle *, void *> CPed_GetVehicle(0xA68C0);
-samp_class_function<void, void *, int, BOOL> CPed_EnterVehicle(0xA6CD0);
-samp_class_function<void, void *> CPed_ExitVehicle(0xA6DA0);
-samp_class_function<BOOL, void *> CPed_IsInVehicle(0xA6730);
+samp_class_function<CVehicle *, void *> CPed__GetVehicle(0xA68C0);
+samp_class_function<void, void *, int, BOOL> CPed__EnterVehicle(0xA6CD0);
+samp_class_function<void, void *> CPed__ExitVehicle(0xA6DA0);
+samp_class_function<BOOL, void *> CPed__IsInVehicle(0xA6730);
 samp_class_function<void, void *, int> CLocalPlayer__SendVehicleExitRPC(0x59E0);
 
 samp_function<void, int, BOOL> SendVehicleEnterRPC(0x58C0);
