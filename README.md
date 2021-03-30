@@ -1,4 +1,6 @@
 # Play GTA SAMP with your mouse and no keyboard!
+***For some reason some people think it's a troll or an inside joke, IT IS NOT! This is a legit mod for those who want to play with one hand or they are forced to.***
+
 A mod for GTA SAMP to play with mouse only, allowing to perform basic main actions such as jumping, crouching, walking around, driving and et cetera.  This mod also serves its purpose to makes it accessible for disabled players to play the game.
 
 (Yes, I know there is some repetitive code or basically everything thrown into one file to handle all actions, I'll get it sorted when I add support for other SAMP clients in the near future.)
